@@ -16,9 +16,8 @@ import RegisterResidentForm from "./screens/RegisterResidentForm";
 //import style file
 import GlobalStyles from "./Style";
 
-const HomeStack = createStackNavigator();
 const CalendarStack = createStackNavigator();
-
+const HomeStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 //load DB
@@ -26,17 +25,16 @@ const Tab = createMaterialBottomTabNavigator();
 import * as FileSystem from "expo-file-system";
 import { Asset } from "expo-asset";
 
+const db_name = "app.db";
+
 FileSystem.downloadAsync(
-  Asset.fromModule(require("./assets/sqlite.db")).uri,
-  `${FileSystem.documentDirectory}SQLite/sqlite.db`
+  Asset.fromModule(require("./assets/" + db_name)).uri,
+  `${FileSystem.documentDirectory}SQLite/app.db`
 );
 
 //database setup
 import * as SQLite from "expo-sqlite";
-const db_name = "sqlite.db";
 global.db = SQLite.openDatabase(db_name);
-
-console.log(FileSystem.documentDirectory + "SQLite/databasename");
 
 export default function App() {
   return (
