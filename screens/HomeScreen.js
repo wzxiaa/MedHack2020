@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Button, StyleSheet, StatusBar } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
+import * as FileSystem from "expo-file-system";
 
 const HomeScreen = ({ navigation }) => {
   const { colors } = useTheme();
@@ -35,7 +36,8 @@ const styles = StyleSheet.create({
 });
 
 const create = () => {
-  console.log("create table .... " + JSON.stringify(global.db));
+  console.log(FileSystem.documentDirectory);
+  console.log("create table .... test" + JSON.stringify(global.db));
   global.db.transaction((tx) => {
     tx.executeSql(
       `CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY NOT NULL, first_name TEXT, last_name TEXT, age INTEGER, gender INTEGER);`
@@ -56,11 +58,23 @@ const insert = () => {
   });
 };
 
+// const query = () => {
+//   console.log("query table ....");
+//   global.db.transaction((tx) => {
+//     tx.executeSql(
+//       `SELECT * FROM test;`,
+//       [],
+//       (_, { rows }) => console.log("Query return " + JSON.stringify(rows)),
+//       (_, error) => console.log("QUERY ERROR " + JSON.stringify(error))
+//     );
+//   });
+// };
+
 const query = () => {
   console.log("query table ....");
   global.db.transaction((tx) => {
     tx.executeSql(
-      `SELECT * FROM test;`,
+      `SELECT * FROM All_users;`,
       [],
       (_, { rows }) => console.log("Query return " + JSON.stringify(rows)),
       (_, error) => console.log("QUERY ERROR " + JSON.stringify(error))
