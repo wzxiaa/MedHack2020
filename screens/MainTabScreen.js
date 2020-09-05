@@ -19,8 +19,7 @@ import PatientProfileScreen from "./PatientProfileScreen";
 const Tab = createMaterialBottomTabNavigator();
 
 const HomeStack = createStackNavigator();
-const DetailsStack = createStackNavigator();
-const Drawer = createDrawerNavigator();
+const CalendarStack = createStackNavigator();
 
 const MainTabScreen = () => (
   <Tab.Navigator initialRouteName="Home" activeColor="#fff">
@@ -48,12 +47,16 @@ const MainTabScreen = () => (
     /> */}
     <Tab.Screen
       name="Calender"
-      component={CalenderScreen}
+      component={CalendarStackScreen}
       options={{
         tabBarLabel: "Calender",
         tabBarColor: "#009387",
         tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="calendar-clock" color={color} size={26} />
+          <MaterialCommunityIcons
+            name="calendar-clock"
+            color={color}
+            size={26}
+          />
         ),
       }}
     />
@@ -98,27 +101,26 @@ const HomeStackScreen = ({ navigation }) => (
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),
-        headerRight: () =>(
-          <Icon.Button 
-          name="ios-add-circle-outline" 
-          backgroundColor="#009387"
-          size={30}
-          onPress={() => navigation.navigate('PatientProfile')}
+        headerRight: () => (
+          <Icon.Button
+            name="ios-add-circle-outline"
+            backgroundColor="#009387"
+            size={30}
+            onPress={() => navigation.navigate("PatientProfile")}
           ></Icon.Button>
-        )
+        ),
       }}
     />
     <HomeStack.Screen
       name="PatientProfile"
       component={PatientProfileScreen}
-      options={{title:"Patient Profile"}}
+      options={{ title: "Patient Profile" }}
     />
-    
   </HomeStack.Navigator>
 );
 
-const DetailsStackScreen = ({ navigation }) => (
-  <DetailsStack.Navigator
+const CalendarStackScreen = ({ navigation }) => (
+  <CalendarStack.Navigator
     screenOptions={{
       headerStyle: {
         backgroundColor: "#009387",
@@ -129,19 +131,10 @@ const DetailsStackScreen = ({ navigation }) => (
       },
     }}
   >
-    <DetailsStack.Screen
-      name="Details"
-      component={DetailsScreen}
-      options={{
-        headerLeft: () => (
-          <Icon.Button
-            name="ios-menu"
-            size={25}
-            backgroundColor="#009387"
-            onPress={() => navigation.openDrawer()}
-          ></Icon.Button>
-        ),
-      }}
+    <CalendarStack.Screen
+      name="Calendar"
+      component={CalenderScreen}
+      options={{}}
     />
-  </DetailsStack.Navigator>
+  </CalendarStack.Navigator>
 );
