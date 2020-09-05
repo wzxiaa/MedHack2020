@@ -31,6 +31,17 @@ const GlobalStyles = StyleSheet.create({
       flex: 1,
       borderWidth: 1,
       paddingHorizontal: 5
+    },
+
+    //global input element style
+    inputContainerStyle: {
+        marginVertical: 10,
+        marginHorizontal: 5,
+        paddingHorizontal: 10,
+    },
+    inputTitleStyle: {
+      fontWeight: 'bold',
+      color: 'red'
     }
 });
 

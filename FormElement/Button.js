@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, TouchableOpacity, ActivityIndicator, StyleSheet } from "react-native";
+import GlobalStyles from '../Style';
 // import PropTypes from "prop-types";
 
 const Button = ({

@@ -1,5 +1,6 @@
 import React from "react";
 import { View, TextInput, StyleSheet, Text } from "react-native";
+import GlobalStyles from '../Style';
 // import PropTypes from "prop-types";
 
 const Input = ({
@@ -12,7 +13,7 @@ const Input = ({
 }) => {
   return (
     <View style={containerStyle}>
-      <Text>{label}</Text>
+      <Text style={GlobalStyles.inputTitleStyle}>{label}</Text>
       <TextInput style={inputStyle} {...props} />
       <Text style={styles.errorInput}>{touched && error}</Text>
     </View>
@@ -21,22 +22,17 @@ const Input = ({
 
 // This creates an object of styles using React Native StyleSheet
 const styles = StyleSheet.create({
-    containerStyle: {
-      marginVertical: 10,
-      marginHorizontal: 5,
-      paddingHorizontal: 10,
-    },
     input: {
       borderBottomWidth: 1,
       minHeight: 40,
-      padding: 10,
+      paddingVertical: 10,
     },
     errorInput: { color: "red", fontSize: 12 },
 });
 
 Input.defaultProps = {
     inputStyle: styles.input,
-    containerStyle: styles.containerStyle,
+    containerStyle: GlobalStyles.inputContainerStyle,
     touched: false,
     error: null,
 };
