@@ -14,6 +14,7 @@ import HomeScreen from "./HomeScreen";
 import DetailsScreen from "./DetailsScreen";
 import ProfileScreen from "./ProfileScreen";
 import CalenderScreen from "./CalenderScreen";
+import PatientProfileScreen from "./PatientProfileScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -34,7 +35,7 @@ const MainTabScreen = () => (
         ),
       }}
     />
-    <Tab.Screen
+    {/* <Tab.Screen
       name="Details"
       component={DetailsStackScreen}
       options={{
@@ -44,7 +45,7 @@ const MainTabScreen = () => (
           <MaterialCommunityIcons name="bell" color={color} size={26} />
         ),
       }}
-    />
+    /> */}
     <Tab.Screen
       name="Calender"
       component={CalenderScreen}
@@ -52,11 +53,11 @@ const MainTabScreen = () => (
         tabBarLabel: "Calender",
         tabBarColor: "#009387",
         tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="account" color={color} size={26} />
+          <MaterialCommunityIcons name="calendar-clock" color={color} size={26} />
         ),
       }}
     />
-    <Tab.Screen
+    {/* <Tab.Screen
       name="Profile"
       component={ProfileScreen}
       options={{
@@ -66,7 +67,7 @@ const MainTabScreen = () => (
           <MaterialCommunityIcons name="account" color={color} size={26} />
         ),
       }}
-    />
+    /> */}
   </Tab.Navigator>
 );
 
@@ -88,7 +89,7 @@ const HomeStackScreen = ({ navigation }) => (
       name="Home"
       component={HomeScreen}
       options={{
-        title: "Home",
+        title: "All Patients",
         headerLeft: () => (
           <Icon.Button
             name="ios-menu"
@@ -97,8 +98,22 @@ const HomeStackScreen = ({ navigation }) => (
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),
+        headerRight: () =>(
+          <Icon.Button 
+          name="ios-add-circle-outline" 
+          backgroundColor="#009387"
+          size={30}
+          onPress={() => navigation.navigate('PatientProfile')}
+          ></Icon.Button>
+        )
       }}
     />
+    <HomeStack.Screen
+      name="PatientProfile"
+      component={PatientProfileScreen}
+      options={{title:"Patient Profile"}}
+    />
+    
   </HomeStack.Navigator>
 );
 
