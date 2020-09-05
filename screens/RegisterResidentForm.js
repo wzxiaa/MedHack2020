@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Select } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useFormik, Formik } from 'formik';
 import Input from '../FormElement/Input';
 import Button from '../FormElement/Button';
