@@ -12,9 +12,9 @@ const HomeScreen = ({ navigation }) => {
   const theme = useTheme();
 
   const data = {
-    name:"Lancer", 
-    age:7, 
-    gender:"male", 
+    name:"Tianzhu", 
+    age:10, 
+    gender:"female", 
     emergency_contact:"1111"
   };
 
@@ -25,7 +25,7 @@ const HomeScreen = ({ navigation }) => {
 
       <Button
         title="Go to details screen"
-        onPress={() => navigation.navigate("ResidentInfoScreen")}
+        onPress={() => navigation.navigate("ResidentInfoScreen", {data:data})}
       />
       <Button title="Create table" onPress={create} />
       <Button title="Insert table" onPress={insert} />
