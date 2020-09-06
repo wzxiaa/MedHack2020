@@ -26,11 +26,11 @@ const Tab = createMaterialBottomTabNavigator();
 import * as FileSystem from "expo-file-system";
 import { Asset } from "expo-asset";
 
-const db_name = "app2.db";
+const db_name = "app3.db";
 
 FileSystem.downloadAsync(
   Asset.fromModule(require("./assets/" + db_name)).uri,
-  `${FileSystem.documentDirectory}SQLite/app2.db`
+  `${FileSystem.documentDirectory}SQLite/app3.db`
 );
 
 //database setup
@@ -99,7 +99,7 @@ const HomeStackScreen = ({ navigation }) => (
           <Icon
             raised
             name="ios-add-circle-outline"
-            color='#fff'
+            color="#fff"
             style={GlobalStyles.headerIcon}
             onPress={() => navigation.navigate("ResidentRegisterForm")}
           />

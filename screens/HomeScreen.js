@@ -3,8 +3,7 @@ import { View, Text, Button, StyleSheet, StatusBar } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import * as FileSystem from "expo-file-system";
-
-
+import ListDisplay from "../Components/ListDisplay";
 
 const HomeScreen = ({ navigation }) => {
   const { colors } = useTheme();
@@ -12,10 +11,10 @@ const HomeScreen = ({ navigation }) => {
   const theme = useTheme();
 
   const data = {
-    name:"Lancer", 
-    age:7, 
-    gender:"male", 
-    emergency_contact:"1111"
+    name: "Lancer",
+    age: 7,
+    gender: "male",
+    emergency_contact: "1111",
   };
 
   return (
@@ -58,8 +57,8 @@ const insert = () => {
   console.log("insert table .... ");
   global.db.transaction((tx) => {
     tx.executeSql(
-      `INSERT INTO test (first_name, last_name, age, gender) VALUES first_name = ?, last_name = ?, age = ?, gender = ?;`,
-      ["mary", "jane", 22, 1],
+      `INSERT INTO All_users (user_name, age, gender, emergency_contact) VALUES (?, ?, ?, ?);`,
+      ["Jone", 99, "Male", "2334672589"],
       (_, { rows: { _array } }) =>
         console.log("Insert return " + JSON.stringify(_array)),
       (_, error) => console.log("INSERT ERROR " + JSON.stringify(error))
