@@ -65,7 +65,7 @@ class ListDisplay extends Component {
         name={item.user_name}
         gender={item.gender}
         emergence_contact={item.emergency_contact}
-        onPress={()=>{
+        onPress={() => {
           // navigate to view page with user data
           this.props.navigation.navigate("ResidentInfoScreen", { data: item });
         }}

@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {/* <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} /> */}
-      {/* <Text style={{ color: colors.text }}>All Patients</Text> */}
+      {/* <Text style={{ color: colors.text }}>All Patients</Text>
 
       {/* <Button
         title="Go to details screen"
@@ -89,8 +89,8 @@ const query = () => {
       `SELECT * from All_users;`,
       [],
       (_, { rows: { _array } }) =>
-      console.log("query return " + JSON.stringify(_array)),
-    (_, error) => console.log("INSERT ERROR " + JSON.stringify(error))
+        console.log("query return " + JSON.stringify(_array)),
+      (_, error) => console.log("INSERT ERROR " + JSON.stringify(error))
     );
   });
 };
