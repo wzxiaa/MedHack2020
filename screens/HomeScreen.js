@@ -61,11 +61,7 @@ const insert = () => {
   global.db.transaction((tx) => {
     tx.executeSql(
       `INSERT INTO All_users (user_name, age, gender, emergency_contact) VALUES (?, ?, ?, ?);`,
-<<<<<<< HEAD
       ["mary", 55, "Male", 1234567890],
-=======
-      ["Jone", 99, "Male", "2334672589"],
->>>>>>> 995b8e79861e1d95c71805a465b52bc804b6b377
       (_, { rows: { _array } }) =>
         console.log("Insert return " + JSON.stringify(_array)),
       (_, error) => console.log("INSERT ERROR " + JSON.stringify(error))
