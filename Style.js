@@ -10,6 +10,11 @@ const GlobalStyles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
     },
+    containerStyle: {
+      marginVertical: 10,
+      marginHorizontal: 5,
+      paddingHorizontal: 10,
+    },
     headerTitle: {
       fontWeight: "bold",
       color: "#FFF"
