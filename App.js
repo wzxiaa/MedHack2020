@@ -28,10 +28,10 @@ import { Asset } from "expo-asset";
 
 const db_name = "app6.db";
 
-FileSystem.downloadAsync(
-  Asset.fromModule(require("./assets/" + db_name)).uri,
-  `${FileSystem.documentDirectory}SQLite/app6.db`
-);
+// FileSystem.downloadAsync(
+//   Asset.fromModule(require("./assets/" + db_name)).uri,
+//   `${FileSystem.documentDirectory}SQLite/app6.db`
+// );
 
 //database setup
 import * as SQLite from "expo-sqlite";

@@ -11,7 +11,6 @@ const GlobalStyles = StyleSheet.create({
       justifyContent: "center",
     },
     containerStyle: {
-      marginVertical: 10,
       marginHorizontal: 5,
       paddingHorizontal: 10,
     },

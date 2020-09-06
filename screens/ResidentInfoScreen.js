@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, ScrollView, StyleSheet, View, SafeAreaView } from "react-native";
 import GlobalStyles from "../Style";
 import Button from "../FormElement/Button";
@@ -41,7 +41,7 @@ const InfoTabScreen = ({ route, navigation }) => {
       />
       <Tab.Screen
         name="Medicine"
-        children={() => <MedicineStackScreen data={data} />}
+        children={() => <MedicineStackScreen navigation={navigation} data={data} />}
         options={{
           tabBarLabel: "Medicine",
           tabBarIcon: ({ color }) => (
@@ -137,22 +137,27 @@ const Entry = ({ label, data }) => {
 };
 
 const ResidentMedScreen = ({ data, navigation }) => {
-  return (
-    <>
-      <View style={GlobalStyles.inputContainerStyle}>
-        <SafeAreaView>
-          <MedListDisplay />
-        </SafeAreaView>
-      </View>
-      <View style={styles.bottom}>
-        <Button
-          containerStyle={styles.buttonContainerStyle}
-          text="Add prescribed medicine"
-          onPress={() => navigation.navigate("MedicineAddForm", { data: data })}
-        />
-      </View>
-    </>
-  );
+    // const [, setUpdate] = useState();
+    // const handleUpdate = () => {
+    //     //passing empty object will re-render the component
+    //     setUpdate({});
+    // }
+    return (
+        <>
+        <View style={GlobalStyles.inputContainerStyle}>
+            <SafeAreaView>
+            <MedListDisplay data={data}/>
+            </SafeAreaView>
+        </View>
+        <View style={styles.bottom}>
+            <Button
+            containerStyle={styles.buttonContainerStyle}
+            text="Add prescribed medicine"
+            onPress={() => navigation.navigate("MedicineAddForm", { data: data })}
+            />
+        </View>
+        </>
+    );
 };
 
 const styles = StyleSheet.create({

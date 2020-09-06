@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import ListItem from "./ListItem";
 import { withNavigation } from 'react-navigation';
+import GlobalStyles from "../Style";
 
 const li = ["aaaa", "sssss", "ssssss"];
 
@@ -64,6 +65,7 @@ class ListDisplay extends Component {
         id={item.user_id}
         name={item.user_name}
         gender={item.gender}
+        age={item.age}
         emergence_contact={item.emergency_contact}
         onPress={() => {
           // navigate to view page with user data
@@ -76,7 +78,7 @@ class ListDisplay extends Component {
   render() {
     // const navigation = this.props.navigation;
     return (
-      <SafeAreaView>
+      <SafeAreaView style={GlobalStyles.inputContainerStyle}>
         <FlatList
           data={this.state.allResidents}
           renderItem={this.renderItem}

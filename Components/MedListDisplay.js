@@ -11,21 +11,21 @@ export default class MedListDisplay extends Component {
   }
 
   async componentDidMount() {
-    // console.log("start did mount");
+    console.log("start did mount ");
     global.db.transaction((tx) => {
       tx.executeSql(
-        `SELECT * FROM Prescribed_med;`,
-        [],
+        `SELECT * FROM Prescribed_med WHERE user_id = ?;`,
+        [this.props.data.user_id],
         (_, { rows: { _array } }) => {
           console.log(JSON.stringify(_array));
-          this.state.allResidents = [];
+          this.state.allMedicine = [];
           var json = JSON.parse(JSON.stringify(_array));
           for (var i in json) {
-            this.state.allResidents.push(json[i]);
+            this.state.allMedicine.push(json[i]);
           }
           console.log(
             "reach did mount, finish promise" +
-              JSON.stringify(this.state.allResidents)
+              JSON.stringify(this.state.allMedicine)
           );
           // resolve(this.state.allResidents);
           this.forceUpdate();
@@ -35,21 +35,20 @@ export default class MedListDisplay extends Component {
     });
   }
 
-  renderItem = ({ item, navigation }) => {
+  renderItem = ({ item }) => {
     return (
-      <MedItem med_name={item.med_name} ATC={item.ATC} dosage={time.dosage} />
+      <MedItem med_name={item.med_name} ATC={item.ATC} dosage={item.dosage} />
     );
   };
 
   render() {
-    const navigation = this.props.navigation;
     return (
       <SafeAreaView>
         <FlatList
           data={this.state.allMedicine}
           renderItem={this.renderItem}
           //TODO: cheng key
-          keyExtractor={(item) => item.rid.toString()}
+          keyExtractor={(item) => item.mid.toString()}
         />
       </SafeAreaView>
     );
