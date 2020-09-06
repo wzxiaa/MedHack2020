@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity, View, Platform } from "react-native";
+import { Avatar } from "react-native-elements";
 import {
   Container,
   Header,
@@ -22,14 +23,23 @@ import {
 import GlobalStyles from "../Style";
 
 export default class ListItem extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <View style={GlobalStyles.container}>
-        <Card style={{ flex: 1, width: 400 }}>
-          <TouchableOpacity>
+      <View style={GlobalStyles.containerStyle}>
+        <Card>
+          <TouchableOpacity onPress={this.props.onPress}>
             <CardItem>
               <Left>
                 <View style={{ alignItems: "flex-start" }}>
+                  {/* <Avatar
+                    size="medium"
+                    icon={{name: 'user'}}
+                    activeOpacity={0.7}
+                  /> */}
                   <Title>{this.props.name}</Title>
                   <Subtitle>{this.props.emergence_contact}</Subtitle>
                 </View>

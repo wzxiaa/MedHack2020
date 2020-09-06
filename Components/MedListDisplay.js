@@ -1,38 +1,21 @@
 import React, { Component } from "react";
 import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  StatusBar,
   FlatList,
   SafeAreaView,
 } from "react-native";
-import ListItem from "./ListItem";
+import MedItem from "./MedItem";
 
-const li = ["aaaa", "sssss", "ssssss"];
 
-var data = [
-  {
-    id: 1,
-    name: "hello",
-  },
-  {
-    id: 2,
-    name: "hello",
-  },
-];
-
-export default class ListDisplay extends Component {
+export default class MedListDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allResidents: [],
+      allMedicine: [],
     };
   }
 
   async componentDidMount() {
-    console.log("start did mount");
+    // console.log("start did mount");
     global.db.transaction((tx) => {
       tx.executeSql(
         `SELECT * FROM All_users;`,
@@ -58,16 +41,12 @@ export default class ListDisplay extends Component {
 
   renderItem = ({ item, navigation }) => {
     return (
-      <ListItem
-        info={item}
-        id={item.user_id}
-        name={item.user_name}
-        gender={item.gender}
-        emergence_contact={item.emergency_contact}
-        onPress={()=>{
-          // navigate to view page with user data
-          navigation.navigate("ResidentInfoScreen", { data: item });
-        }}
+      <MedItem
+        // info={item}
+        // id={item.user_id}
+        // name={item.user_name}
+        // gender={item.gender}
+        // emergence_contact={item.emergency_contact}
       />
     );
   };
@@ -77,8 +56,9 @@ export default class ListDisplay extends Component {
     return (
       <SafeAreaView>
         <FlatList
-          data={this.state.allResidents}
+          data={this.state.allMedicine}
           renderItem={this.renderItem}
+          //TODO: cheng key 
           keyExtractor={(item) => item.user_id.toString()}
         />
       </SafeAreaView>

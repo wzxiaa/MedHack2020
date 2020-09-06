@@ -51,6 +51,7 @@ export default function App() {
           component={HomeStackScreen}
           options={{
             tabBarLabel: "All residents",
+            headerTintColor: "#FFF",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons
                 name="account-group"
@@ -66,6 +67,7 @@ export default function App() {
           options={{
             tabBarLabel: "Calender",
             tabBarColor: "#009387",
+            headerTintColor: "#FFF",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons
                 name="calendar-clock"
@@ -92,6 +94,7 @@ const HomeStackScreen = ({ navigation }) => (
       component={HomeScreen}
       options={{
         title: "Home",
+        headerTintColor: "#FFF",
         // headerStyle: GlobalStyles.header,
         // headerTitleStyle: GlobalStyles.headerTitle,
 
@@ -111,6 +114,7 @@ const HomeStackScreen = ({ navigation }) => (
       component={RegisterResidentForm}
       options={{
         title: "Resident Registeration",
+        headerTintColor: "#FFF",
       }}
     />
     <HomeStack.Screen
@@ -118,6 +122,7 @@ const HomeStackScreen = ({ navigation }) => (
       component={ResidentInfoScreen}
       options={{
         title: "Resident Panel",
+        headerTintColor: "#FFF",
       }}
     />
   </HomeStack.Navigator>
@@ -138,7 +143,6 @@ const CalendarStackScreen = ({ navigation }) => (
     <CalendarStack.Screen
       name="Calendar"
       component={CalenderScreen}
-      options={{}}
     />
   </CalendarStack.Navigator>
 );

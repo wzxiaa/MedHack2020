@@ -30,13 +30,17 @@ const CalenderScreen = () => {
         const strTime = timeToString(time);
         if (!items[strTime]) {
           items[strTime] = [];
-          const numItems = Math.floor(Math.random() * 3 + 1);
-          for (let j = 0; j < numItems; j++) {
-            items[strTime].push({
-              name: "Item for " + strTime + " #" + j,
-              height: Math.max(50, Math.floor(Math.random() * 150)),
-            });
-          }
+          // const numItems = Math.floor(Math.random() * 3 + 1);
+          // for (let j = 0; j < numItems; j++) {
+          //   items[strTime].push({
+          //     name: "Item for " + strTime + " #" + j,
+          //     height: Math.max(50, Math.floor(Math.random() * 150)),
+          //   });
+          // }
+
+          //TODO: query database of the selected date
+          //for each item of the selected date, sort by time
+          //then add to item array
         }
       }
       const newItems = {};

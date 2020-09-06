@@ -8,12 +8,12 @@ import { Table, Row, Rows } from 'react-native-table-component';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from "@react-navigation/stack";
 
+import MedListDisplay from "../Components/MedListDisplay";
 import PrescribedMedScreen from '../screens/PrescribedMedScreen';
 import { FlatList } from 'react-native-gesture-handler';
 import { Divider } from 'react-native-paper';
 
 const Tab = createMaterialTopTabNavigator();
-
 const MedicineStack = createStackNavigator();
 
 const InfoTabScreen = ({
@@ -65,6 +65,7 @@ const MedicineStackScreen = ({ navigation }) => (
       screenOptions={{
         headerStyle: GlobalStyles.header,
         headerTitleStyle: GlobalStyles.headerTitle,
+        headerTintColor: "#FFF"
       }}
     >
       <MedicineStack.Screen
@@ -143,11 +144,8 @@ const ResidentMedScreen = ({
         <>
             <View style={GlobalStyles.inputContainerStyle}>
                 <SafeAreaView>
-                    <ScrollView>
-                    </ScrollView>
+                    <MedListDisplay />
                 </SafeAreaView>
-                
-                
             </View>
             <View style={styles.bottom}>
                 <Button containerStyle={styles.buttonContainerStyle} text="Add prescribed medicine" onPress={()=>navigation.navigate("MedicineAddForm")}/>  
