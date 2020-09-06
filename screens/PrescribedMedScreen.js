@@ -29,7 +29,6 @@ const PrescribedMedScreen = () => {
           <Select
             label="Route"
             placeholder={{label:"Select route ...", value: null}}
-            
             onValueChange={(value)=> {console.log(value); handleChange('route');}}
             items={[
                 {label:'Oral', value:'oral'},
@@ -44,16 +43,13 @@ const PrescribedMedScreen = () => {
          />
          <View style={GlobalStyles.inputContainerStyle}>
          <Text style={GlobalStyles.inputTitleStyle}>
-             
              Selecting start time
          </Text>
          <DateTimePicker value={date} onValueChange={handleChange('startingtime')} mode="datetime" />
         <Select
             label="Frequency"
-            
-            placeholder={{label:"Select frequency ..."}}
+            placeholder={{label:"Select frequency ...", value: null}}
             onValueChange={(value)=> {console.log(value); handleChange('frequency');}}
-            value = {values.frequency}
             items={[
                 {label:'Just once',value:'justonce'},
                 {label:'Once a day', value:'onceaday'},
@@ -64,7 +60,7 @@ const PrescribedMedScreen = () => {
          />
          </View>    
          
-          <Button text="Submit" onPress={handleSubmit} />
+          <Button text="Submit" onPress={insert_test} />
         </ScrollView>
       )}
         </Formik>
@@ -73,7 +69,7 @@ const PrescribedMedScreen = () => {
     const insert_test = () => {
         global.db.transaction((tx) => {
           tx.executeSql(
-            'insert into test (med_name, ATC, dosage, route,startingtime,frequency,user_id) VALUES (?, ?, ?, ?, ?)', [values.med_name, 
+            'insert Prescribed_med (med_name, ATC, dosage, route,startingtime,frequency,user_id) VALUES (?, ?, ?, ?, ?)', [values.med_name, 
                 values.ATC, values.dosage, values.route, values.startingtime,values.frequency, 1]).then(([tx, results]) => {
                     resolve(results);
                   });
@@ -81,8 +77,7 @@ const PrescribedMedScreen = () => {
                   this.closeDatabase(db);
                 }).catch((err) => {
                   console.log(err);
-                });
-              
+                }); 
             };  
     
 
