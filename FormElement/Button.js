@@ -11,7 +11,6 @@ const Button = ({
     isSubmitting,
     disabled,
     indicatorColor,
-    onPress,
     ...props
 }) => {
     return (

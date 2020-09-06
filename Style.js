@@ -41,7 +41,6 @@ const GlobalStyles = StyleSheet.create({
     },
     inputTitleStyle: {
       fontWeight: 'bold',
-      color: 'red'
     }
 });
 
