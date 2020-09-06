@@ -4,10 +4,19 @@ import { useTheme } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import * as FileSystem from "expo-file-system";
 
+
+
 const HomeScreen = ({ navigation }) => {
   const { colors } = useTheme();
 
   const theme = useTheme();
+
+  const data = {
+    name:"Lancer", 
+    age:7, 
+    gender:"male", 
+    emergency_contact:"1111"
+  };
 
   return (
     <View style={styles.container}>
@@ -16,7 +25,7 @@ const HomeScreen = ({ navigation }) => {
 
       <Button
         title="Go to details screen"
-        onPress={() => navigation.navigate("Details")}
+        onPress={() => navigation.navigate("ResidentInfoScreen")}
       />
       <Button title="Create table" onPress={create} />
       <Button title="Insert table" onPress={insert} />

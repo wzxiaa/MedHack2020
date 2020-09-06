@@ -12,7 +12,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./screens/HomeScreen";
 import CalenderScreen from "./screens/CalenderScreen";
 import RegisterResidentForm from "./screens/RegisterResidentForm";
-import PrescribedMedScreen from "./screens/PrescribedMedScreen";
+import ResidentInfoScreen from "./screens/ResidentInfoScreen";
 
 //import style file
 import GlobalStyles from "./Style";
@@ -35,6 +35,7 @@ FileSystem.downloadAsync(
 
 //database setup
 import * as SQLite from "expo-sqlite";
+import ResidentRegisterForm from "./screens/RegisterResidentForm";
 global.db = SQLite.openDatabase(db_name);
 
 export default function App() {
@@ -90,26 +91,33 @@ const HomeStackScreen = ({ navigation }) => (
       name="Home"
       component={HomeScreen}
       options={{
-        title: "All Patients",
+        title: "Home",
         // headerStyle: GlobalStyles.header,
         // headerTitleStyle: GlobalStyles.headerTitle,
 
         headerRight: () => (
-          <Icon.Button
+          <Icon
+            raised
             name="ios-add-circle-outline"
+            color='#fff'
             style={GlobalStyles.headerIcon}
-            onPress={() => navigation.navigate("PrescribedMedScreen")}
-          ></Icon.Button>
+            onPress={() => navigation.navigate("ResidentRegisterForm")}
+          />
         ),
       }}
     />
     <HomeStack.Screen
-      name="PrescribedMedScreen"
-      component={PrescribedMedScreen}
+      name="ResidentRegisterForm"
+      component={RegisterResidentForm}
       options={{
-        title: "PrescribedMedScreen",
-        // headerStyle: GlobalStyles.header,
-        // headerTitleStyle: GlobalStyles.headerTitle,
+        title: "Resident Registeration",
+      }}
+    />
+    <HomeStack.Screen
+      name="ResidentInfoScreen"
+      component={ResidentInfoScreen}
+      options={{
+        title: "Resident Panel",
       }}
     />
   </HomeStack.Navigator>
