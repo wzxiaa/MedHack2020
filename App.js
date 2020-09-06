@@ -99,7 +99,7 @@ const HomeStackScreen = ({ navigation }) => (
           <Icon
             raised
             name="ios-add-circle-outline"
-            color='#fff'
+            color="#fff"
             style={GlobalStyles.headerIcon}
             onPress={() => navigation.navigate("ResidentRegisterForm")}
           />

@@ -3,21 +3,25 @@ import { Text, ScrollView, StyleSheet, View, SafeAreaView } from 'react-native';
 import GlobalStyles from '../Style';
 import Button from '../FormElement/Button';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { Table, Row, Rows } from 'react-native-table-component';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from "@react-navigation/stack";
 
 import PrescribedMedScreen from '../screens/PrescribedMedScreen';
 import { FlatList } from 'react-native-gesture-handler';
+import { Divider } from 'react-native-paper';
 
 const Tab = createMaterialTopTabNavigator();
 
 const MedicineStack = createStackNavigator();
 
 const InfoTabScreen = ({
+    route,
     navigation
 }) => {
-    // const data = navigation.state.params.data;
+    const {data} = route.params;
+    console.log(data);
     return (
         <Tab.Navigator 
             initialRouteName="Basics"
@@ -26,7 +30,7 @@ const InfoTabScreen = ({
         >
             <Tab.Screen 
                 name="Basics" 
-                children={()=><ResidentInfoScreen/>}
+                children={()=><ResidentInfoScreen data={data}/>}
                 options={{
                     tabBarLabel: "Basic Info",
                     tabBarIcon: ({ color }) => (
@@ -81,25 +85,40 @@ const MedicineStackScreen = ({ navigation }) => (
   );
 
 const ResidentInfoScreen = ({
-    route,
-    navigation,
+    data
 }) => {
-    // const { data } = route.params;
-    const data = {
-        name:"Lancer", 
-        age:7, 
-        gender:"male", 
-        emergency_contact:"1111"
-    };
+    const tableHead = ['Disease', 'Has symptom'];
+    const tableData = [
+        ['Asthma', data.asthma],
+        ['Acid Reflux', data.acid_reflux],
+        ['Chronic low back pain', data.chronic_low_back_pain],
+        ['Erectile dysfunction', data.erectile_dysfunction],
+        ['Prostate problem', data.prostate_problem],
+        ['Cholesterol problem', data.cholesterol_problem],
+        ['Gout', data.gout],
+        ['migraine', data.migraine],
+        ['Thyroid problem', data.thyroid_problem],
+        ['Couagulation Problem', data.couagulation_problem],
+        ['Diabete',data.diabete],
+        ['High blood pressure',data.high_blood_pressure],
+        ['Osteopenia',data.osteopenia],
+        ['Alcoholism',data.alcoholism]
+    ];
     return (
-        <View style={GlobalStyles.inputContainerStyle}>
+        <View style={GlobalStyles.containerStyle}>
             <ScrollView>
                 <Entry label="Name" data={data.name} />
                 <Entry label="Age" data={data.age} />
                 <Entry label="Gender" data={data.gender} />
                 <Entry label="Emergency Contact" data={data.emergency_contact} />
-                
-                {/* <Button text="Add prescribed medicine" onPress={()=>navigation.navigate()}/> */}
+                <Divider style={{ backgroundColor: "#009387", height: 2, marginVertical:5 }} />
+                {/* Table showing medical history */}
+                <View>
+                    <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                        <Row data={tableHead} style={styles.head} textStyle={styles.text}/>
+                        <Rows data={tableData} textStyle={styles.text}/>
+                    </Table>
+                </View>
             </ScrollView>
         </View>
     );
@@ -154,7 +173,9 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderRadius: 5
     },
-    bottom: {flex: 1, justifyContent: 'flex-end', marginBottom: 5}
+    bottom: {flex: 1, justifyContent: 'flex-end', marginBottom: 5},
+    head: { height: 40, backgroundColor: '#f1f8ff' },
+    text: { margin: 6 }
 })
 
 export default InfoTabScreen;

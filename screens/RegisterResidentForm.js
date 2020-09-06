@@ -20,7 +20,6 @@ const genderOptions =
 
 const ResidentRegisterForm = () => {
   return (
-    
     <Formik
       initialValues={{
         name:'', 
@@ -62,10 +61,7 @@ const ResidentRegisterForm = () => {
                   <Select 
                     label="Gender"
                     placeholder={{label:"Select gender ...", value: null}}
-                    onValueChange={(value) => {
-                      console.log(value);
-                      handleChange('gender');
-                    }}
+                    onValueChange={(value) => setFieldValue("gender", value)}
                     items={genderOptions}
                   />
                   <Input label="Emergency Contact" value={values.emergency_contact} onChangeText={handleChange('emergency_contact')} />

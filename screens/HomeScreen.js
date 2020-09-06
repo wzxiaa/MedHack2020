@@ -3,8 +3,7 @@ import { View, Text, Button, StyleSheet, StatusBar } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import * as FileSystem from "expo-file-system";
-
-
+import ListDisplay from "../Components/ListDisplay";
 
 const HomeScreen = ({ navigation }) => {
   const { colors } = useTheme();
@@ -12,10 +11,10 @@ const HomeScreen = ({ navigation }) => {
   const theme = useTheme();
 
   const data = {
-    name:"Lancer", 
-    age:7, 
-    gender:"male", 
-    emergency_contact:"1111"
+    name: "Lancer",
+    age: 7,
+    gender: "male",
+    emergency_contact: "1111",
   };
 
   return (
@@ -25,11 +24,14 @@ const HomeScreen = ({ navigation }) => {
 
       <Button
         title="Go to details screen"
-        onPress={() => navigation.navigate("ResidentInfoScreen")}
+        onPress={() =>
+          navigation.navigate("ResidentInfoScreen", { data: data })
+        }
       />
-      <Button title="Create table" onPress={create} />
+      <ListDisplay />
+      {/* <Button title="Create table" onPress={create} />
       <Button title="Insert table" onPress={insert} />
-      <Button title="Query table" onPress={query} />
+      <Button title="Query table" onPress={query} /> */}
     </View>
   );
 };
@@ -59,7 +61,11 @@ const insert = () => {
   global.db.transaction((tx) => {
     tx.executeSql(
       `INSERT INTO All_users (user_name, age, gender, emergency_contact) VALUES (?, ?, ?, ?);`,
+<<<<<<< HEAD
       ["mary", 55, "Male", 1234567890],
+=======
+      ["Jone", 99, "Male", "2334672589"],
+>>>>>>> 995b8e79861e1d95c71805a465b52bc804b6b377
       (_, { rows: { _array } }) =>
         console.log("Insert return " + JSON.stringify(_array)),
       (_, error) => console.log("INSERT ERROR " + JSON.stringify(error))
