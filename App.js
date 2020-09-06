@@ -12,6 +12,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./screens/HomeScreen";
 import CalenderScreen from "./screens/CalenderScreen";
 import RegisterResidentForm from "./screens/RegisterResidentForm";
+import PrescribedMedScreen from "./screens/PrescribedMedScreen";
 
 //import style file
 import GlobalStyles from "./Style";
@@ -25,11 +26,11 @@ const Tab = createMaterialBottomTabNavigator();
 import * as FileSystem from "expo-file-system";
 import { Asset } from "expo-asset";
 
-const db_name = "app.db";
+const db_name = "app2.db";
 
 FileSystem.downloadAsync(
   Asset.fromModule(require("./assets/" + db_name)).uri,
-  `${FileSystem.documentDirectory}SQLite/app.db`
+  `${FileSystem.documentDirectory}SQLite/app2.db`
 );
 
 //database setup
@@ -97,16 +98,16 @@ const HomeStackScreen = ({ navigation }) => (
           <Icon.Button
             name="ios-add-circle-outline"
             style={GlobalStyles.headerIcon}
-            onPress={() => navigation.navigate("ResidentRegistrationForm")}
+            onPress={() => navigation.navigate("PrescribedMedScreen")}
           ></Icon.Button>
         ),
       }}
     />
     <HomeStack.Screen
-      name="ResidentRegistrationForm"
-      component={RegisterResidentForm}
+      name="PrescribedMedScreen"
+      component={PrescribedMedScreen}
       options={{
-        title: "Resident Registration",
+        title: "PrescribedMedScreen",
         // headerStyle: GlobalStyles.header,
         // headerTitleStyle: GlobalStyles.headerTitle,
       }}
