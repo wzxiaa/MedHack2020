@@ -16,7 +16,10 @@ const GlobalStyles = StyleSheet.create({
     },
     headerIcon: {
       backgroundColor: themeBGColor,
-      fontSize: 30
+      fontSize: 30,
+      justifyContent: 'center',
+      width: 25,
+      marginRight: 10
     },
     header: {
       backgroundColor: themeBGColor
