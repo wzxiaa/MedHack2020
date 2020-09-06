@@ -43,6 +43,7 @@ const ResidentRegisterForm = () => {
       }}
       onSubmit={(values) => {
         console.log('submitted', values);
+        insert_test(values);
       }}
     >
       {({handleChange, handleSubmit, values, setFieldValue, isSubmitting}) => (
@@ -96,8 +97,35 @@ const ResidentRegisterForm = () => {
     </Formik>
       
   );
-
 };
+
+// const insert_resident = () => {
+//   global.db.transaction((tx) => {
+//     tx.executeSql(
+//       'insert All_uers (user_name, age, gender, emergency_contact) VALUES (?, ?, ?, ?, ?)', [values.name, 
+//           values.age, values.gender, values.emergency_contact]).then(([tx, results]) => {
+//               resolve(results);
+//             });
+//           }).then((result) => {
+//             this.closeDatabase(db);
+//           }).catch((err) => {
+//             console.log(err);
+//           }); 
+//       };
+
+      const insert_test = (values) => {
+        console.log(values.age);
+        global.db.transaction((tx) => {
+          tx.executeSql(
+            'insert into All_users (user_name, age, gender, emergency_contact,acid_reflux, chronic_low_back_pain,erectile_dysfunction) VALUES (?, ?, ?, ?,?,?,?)', [values.name, 
+              values.age, values.gender, values.emergency_contact,values.acid_reflux,values.chronic_low_back_pain,values.erectile_dysfunction], //values.acid_reflux],
+            (_, { rows: { _array } }) =>
+              console.log("Insert return " + JSON.stringify(_array)),
+            (_, error) => console.log("INSERT ERROR " + JSON.stringify(error))
+          );
+        });
+      };
+
 
 export default ResidentRegisterForm;
 
