@@ -56,7 +56,7 @@ export default class ListDisplay extends Component {
     });
   }
 
-  renderItem = ({ item, navigation }) => {
+  renderItem = ({ item }) => {
     return (
       <ListItem
         info={item}
@@ -64,9 +64,9 @@ export default class ListDisplay extends Component {
         name={item.user_name}
         gender={item.gender}
         emergence_contact={item.emergency_contact}
-        onPress={()=>{
+        onPress={() => {
           // navigate to view page with user data
-          navigation.navigate("ResidentInfoScreen", { data: item });
+          this.props.navigation.navigate("ResidentInfoScreen", { data: item });
         }}
       />
     );

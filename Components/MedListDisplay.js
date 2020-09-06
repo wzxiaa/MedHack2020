@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import {
-  FlatList,
-  SafeAreaView,
-} from "react-native";
+import { FlatList, SafeAreaView } from "react-native";
 import MedItem from "./MedItem";
-
 
 export default class MedListDisplay extends Component {
   constructor(props) {
@@ -18,7 +14,7 @@ export default class MedListDisplay extends Component {
     // console.log("start did mount");
     global.db.transaction((tx) => {
       tx.executeSql(
-        `SELECT * FROM All_users;`,
+        `SELECT * FROM Prescribed_med;`,
         [],
         (_, { rows: { _array } }) => {
           console.log(JSON.stringify(_array));
@@ -41,13 +37,7 @@ export default class MedListDisplay extends Component {
 
   renderItem = ({ item, navigation }) => {
     return (
-      <MedItem
-        // info={item}
-        // id={item.user_id}
-        // name={item.user_name}
-        // gender={item.gender}
-        // emergence_contact={item.emergency_contact}
-      />
+      <MedItem med_name={item.med_name} ATC={item.ATC} dosage={time.dosage} />
     );
   };
 
@@ -58,8 +48,8 @@ export default class MedListDisplay extends Component {
         <FlatList
           data={this.state.allMedicine}
           renderItem={this.renderItem}
-          //TODO: cheng key 
-          keyExtractor={(item) => item.user_id.toString()}
+          //TODO: cheng key
+          keyExtractor={(item) => item.rid.toString()}
         />
       </SafeAreaView>
     );

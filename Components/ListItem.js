@@ -30,7 +30,7 @@ export default class ListItem extends Component {
   render() {
     return (
       <View style={GlobalStyles.containerStyle}>
-        <Card>
+        <Card style={{ flex: 1, width: 390 }}>
           <TouchableOpacity onPress={this.props.onPress}>
             <CardItem>
               <Left>
