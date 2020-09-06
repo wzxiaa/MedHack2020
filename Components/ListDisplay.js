@@ -9,6 +9,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import ListItem from "./ListItem";
+import { withNavigation } from 'react-navigation';
 
 const li = ["aaaa", "sssss", "ssssss"];
 
@@ -23,7 +24,7 @@ var data = [
   },
 ];
 
-export default class ListDisplay extends Component {
+class ListDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +57,7 @@ export default class ListDisplay extends Component {
     });
   }
 
-  renderItem = ({ item, navigation }) => {
+  renderItem = ({ item }) => {
     return (
       <ListItem
         info={item}
@@ -66,14 +67,14 @@ export default class ListDisplay extends Component {
         emergence_contact={item.emergency_contact}
         onPress={()=>{
           // navigate to view page with user data
-          navigation.navigate("ResidentInfoScreen", { data: item });
+          this.props.navigation.navigate("ResidentInfoScreen", { data: item });
         }}
       />
     );
   };
 
   render() {
-    const navigation = this.props.navigation;
+    // const navigation = this.props.navigation;
     return (
       <SafeAreaView>
         <FlatList
@@ -85,3 +86,5 @@ export default class ListDisplay extends Component {
     );
   }
 }
+
+export default ListDisplay;

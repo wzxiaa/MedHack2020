@@ -19,7 +19,7 @@ const Check = ({
                 <CheckBox
                     right
                     containerStyle={styles.checkboxContainer}
-                    title='Click Here'
+                    title='Yes'
                     checked={checked}
                     checkedIcon='dot-circle-o'
                     uncheckedIcon='circle-o'

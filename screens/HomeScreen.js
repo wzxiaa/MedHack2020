@@ -19,19 +19,20 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} />
-      <Text style={{ color: colors.text }}>All Patients</Text>
+      {/* <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} /> */}
+      {/* <Text style={{ color: colors.text }}>All Patients</Text> */}
 
-      <Button
+      {/* <Button
         title="Go to details screen"
         onPress={() =>
           navigation.navigate("ResidentInfoScreen", { data: data })
         }
-      />
-      <ListDisplay />
+      /> */}
       {/* <Button title="Create table" onPress={create} />
       <Button title="Insert table" onPress={insert} />
       <Button title="Query table" onPress={query} /> */}
+      <ListDisplay navigation={navigation}/>
+      
     </View>
   );
 };

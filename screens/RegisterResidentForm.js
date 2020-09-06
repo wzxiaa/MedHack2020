@@ -18,7 +18,7 @@ const genderOptions =
     { label: 'Other', value: 'other' },
   ]
 
-const ResidentRegisterForm = () => {
+const ResidentRegisterForm = ({ navigation }) => {
   return (
     <Formik
       initialValues={{
@@ -43,7 +43,7 @@ const ResidentRegisterForm = () => {
       }}
       onSubmit={(values) => {
         console.log('submitted', values);
-        insert_test(values);
+        insert_test(values, navigation);
       }}
     >
       {({handleChange, handleSubmit, values, setFieldValue, isSubmitting}) => (
@@ -69,6 +69,7 @@ const ResidentRegisterForm = () => {
                   <View>
                     <Divider style={{ backgroundColor: "#009387", height: 2 }} />
                     <Header label="Medical History Section" />
+                    <Text style={{textAlign:'center'}}>Check "Yes" if the resident has the following symptom</Text>
                     <Check label="Acid reflux" onPress={() => setFieldValue('acid_reflux', !values.checked)}/>
                     <Check label="Chronic low back pain" onPress={() => setFieldValue('chronic_low_back_pain', !values.checked)}/>
                     <Check label="Erectile dysfunction" onPress={() => setFieldValue('erectile_dysfunction', !values.checked)}/>
@@ -90,7 +91,7 @@ const ResidentRegisterForm = () => {
             </ScrollView>
           </SafeAreaView>
           <View>
-            <Button text="Submit" onPress={handleSubmit}/>
+            <Button text="Submit" onPress={handleSubmit} disabled={isSubmitting}/>
           </View>
         </>
       )}
@@ -113,14 +114,16 @@ const ResidentRegisterForm = () => {
 //           }); 
 //       };
 
-      const insert_test = (values) => {
+      const insert_test = (values, navigation) => {
         console.log(values.age);
         global.db.transaction((tx) => {
           tx.executeSql(
             'insert into All_users (user_name, age, gender, emergency_contact,acid_reflux, chronic_low_back_pain,erectile_dysfunction) VALUES (?, ?, ?, ?,?,?,?)', [values.name, 
               values.age, values.gender, values.emergency_contact,values.acid_reflux,values.chronic_low_back_pain,values.erectile_dysfunction], //values.acid_reflux],
-            (_, { rows: { _array } }) =>
-              console.log("Insert return " + JSON.stringify(_array)),
+            (_, { rows: { _array } }) => {
+              console.log("Insert return " + JSON.stringify(_array));
+              navigation.navigate("Home");
+            },
             (_, error) => console.log("INSERT ERROR " + JSON.stringify(error))
           );
         });

@@ -30,7 +30,7 @@ export default class ListItem extends Component {
   render() {
     return (
       <View style={GlobalStyles.containerStyle}>
-        <Card>
+        <Card style={{flex:1, width:380}}>
           <TouchableOpacity onPress={this.props.onPress}>
             <CardItem>
               <Left>
@@ -41,12 +41,12 @@ export default class ListItem extends Component {
                     activeOpacity={0.7}
                   /> */}
                   <Title>{this.props.name}</Title>
-                  <Subtitle>{this.props.emergence_contact}</Subtitle>
                 </View>
               </Left>
               <Right>
                 <View style={{ alignItems: "flex-end" }}>
-                  <Subtitle>hello</Subtitle>
+                  <Subtitle>{this.props.gender}</Subtitle>
+                  <Subtitle>{this.props.age}</Subtitle>
                 </View>
               </Right>
             </CardItem>

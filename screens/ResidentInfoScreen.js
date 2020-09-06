@@ -85,30 +85,34 @@ const MedicineStackScreen = ({ navigation }) => (
     </MedicineStack.Navigator>
   );
 
+function BooleanIntegerToString(num) {
+    return num == 1 ? "True" : "False";
+}
+ 
 const ResidentInfoScreen = ({
     data
 }) => {
     const tableHead = ['Disease', 'Has symptom'];
     const tableData = [
-        ['Asthma', data.asthma],
-        ['Acid Reflux', data.acid_reflux],
-        ['Chronic low back pain', data.chronic_low_back_pain],
-        ['Erectile dysfunction', data.erectile_dysfunction],
-        ['Prostate problem', data.prostate_problem],
-        ['Cholesterol problem', data.cholesterol_problem],
-        ['Gout', data.gout],
-        ['migraine', data.migraine],
-        ['Thyroid problem', data.thyroid_problem],
-        ['Couagulation Problem', data.couagulation_problem],
-        ['Diabete',data.diabete],
-        ['High blood pressure',data.high_blood_pressure],
-        ['Osteopenia',data.osteopenia],
-        ['Alcoholism',data.alcoholism]
+        ['Asthma', BooleanIntegerToString(data.asthma)],
+        ['Acid Reflux', BooleanIntegerToString(data.acid_reflux)],
+        ['Chronic low back pain', BooleanIntegerToString(data.chronic_low_back_pain)],
+        ['Erectile dysfunction', BooleanIntegerToString(data.erectile_dysfunction)],
+        ['Prostate problem', BooleanIntegerToString(data.prostate_problem)],
+        ['Cholesterol problem', BooleanIntegerToString(data.cholesterol_problem)],
+        ['Gout', BooleanIntegerToString(data.gout)],
+        ['migraine', BooleanIntegerToString(data.migraine)],
+        ['Thyroid problem', BooleanIntegerToString(data.thyroid_problem)],
+        ['Couagulation Problem', BooleanIntegerToString(data.couagulation_problem)],
+        ['Diabete', BooleanIntegerToString(data.diabete)],
+        ['High blood pressure', BooleanIntegerToString(data.high_blood_pressure)],
+        ['Osteopenia', BooleanIntegerToString(data.osteopenia)],
+        ['Alcoholism', BooleanIntegerToString(data.alcoholism)]
     ];
     return (
         <View style={GlobalStyles.containerStyle}>
             <ScrollView>
-                <Entry label="Name" data={data.name} />
+                <Entry label="Name" data={data.user_name} />
                 <Entry label="Age" data={data.age} />
                 <Entry label="Gender" data={data.gender} />
                 <Entry label="Emergency Contact" data={data.emergency_contact} />
