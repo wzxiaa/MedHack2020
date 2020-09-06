@@ -23,48 +23,6 @@ const PrescribedMedScreen = () => {
           onSubmit={(values) => console.log('submitted', values)}
         >
         {({handleChange, handleSubmit, values}) => (
-<<<<<<< HEAD
-        <ScrollView>
-          <Input label="Medication Name" value={values.med_name} onChangeText={handleChange('med_name')}/>
-          <Input label="ATC" value={values.ATC} onChangeText={handleChange('ATC')}/>
-          <Input label="Dosage(mg)" value={values.dosage} onChangeText={handleChange('dosage')}/>
-          <Select
-            label="Route"
-            placeholder={{label:"Select route ...", value: null}}
-            onValueChange={(value)=> {console.log(value); handleChange('route');}}
-            items={[
-                {label:'Oral', value:'oral'},
-                {label:'Injection',value:'injection'},
-                {label:'Rectal',value:'rectal'},
-                {label:'Vaginal', value:'vaginal'},
-                {label:'Ocular',value:'ocular'},
-                {label:'Otic',value:'otic'},
-                {label:'Nasal',value:'nasal'},
-                {label:'inhalation',value:'inhalation'}
-            ]}
-         />
-         <View style={GlobalStyles.inputContainerStyle}>
-         <Text style={GlobalStyles.inputTitleStyle}>
-             Selecting start time
-         </Text>
-         <DateTimePicker value={date} onValueChange={handleChange('startingtime')} mode="datetime" />
-        <Select
-            label="Frequency"
-            placeholder={{label:"Select frequency ...", value: null}}
-            onValueChange={(value)=> {console.log(value); handleChange('frequency');}}
-            items={[
-                {label:'Just once',value:'justonce'},
-                {label:'Once a day', value:'onceaday'},
-                {label:'Twice a day',value:'twiceaday'},
-                {label:'Once a week',value:'onceaweek'},
-                
-            ]}
-         />
-         </View>    
-         
-          <Button text="Submit" onPress={insert_test} />
-        </ScrollView>
-=======
           <>
             <SafeAreaView style={{ flex: 1 }}>
               <ScrollView>
@@ -116,7 +74,6 @@ const PrescribedMedScreen = () => {
               <Button text="Submit" onPress={handleSubmit} />
             </View>
           </>
->>>>>>> 2a6a2a3de751a8af72f6e71d429b83e6d165c67c
       )}
         </Formik>
     );
