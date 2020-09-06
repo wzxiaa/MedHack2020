@@ -81,7 +81,7 @@ const PrescribedMedScreen = () => {
     const insert_test = () => {
         global.db.transaction((tx) => {
           tx.executeSql(
-            'insert into test (med_name, ATC, dosage, route,startingtime,frequency,user_id) VALUES (?, ?, ?, ?, ?)', [values.med_name, 
+            'insert Prescribed_med (med_name, ATC, dosage, route,startingtime,frequency,user_id) VALUES (?, ?, ?, ?, ?)', [values.med_name, 
                 values.ATC, values.dosage, values.route, values.startingtime,values.frequency, 1]).then(([tx, results]) => {
                     resolve(results);
                   });
@@ -89,8 +89,7 @@ const PrescribedMedScreen = () => {
                   this.closeDatabase(db);
                 }).catch((err) => {
                   console.log(err);
-                });
-              
+                }); 
             };  
     
 
