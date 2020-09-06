@@ -58,8 +58,8 @@ const insert = () => {
   console.log("insert table .... ");
   global.db.transaction((tx) => {
     tx.executeSql(
-      `INSERT INTO test (first_name, last_name, age, gender) VALUES first_name = ?, last_name = ?, age = ?, gender = ?;`,
-      ["mary", "jane", 22, 1],
+      `INSERT INTO All_users (user_name, age, gender, emergency_contact) VALUES (?, ?, ?, ?);`,
+      ["mary", 55, "Male", 1234567890],
       (_, { rows: { _array } }) =>
         console.log("Insert return " + JSON.stringify(_array)),
       (_, error) => console.log("INSERT ERROR " + JSON.stringify(error))
@@ -83,10 +83,11 @@ const query = () => {
   console.log("query table ....");
   global.db.transaction((tx) => {
     tx.executeSql(
-      `SELECT * FROM All_users;`,
+      `SELECT * from All_users;`,
       [],
-      (_, { rows }) => console.log("Query return " + JSON.stringify(rows)),
-      (_, error) => console.log("QUERY ERROR " + JSON.stringify(error))
+      (_, { rows: { _array } }) =>
+      console.log("query return " + JSON.stringify(_array)),
+    (_, error) => console.log("INSERT ERROR " + JSON.stringify(error))
     );
   });
 };

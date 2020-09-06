@@ -26,11 +26,11 @@ const Tab = createMaterialBottomTabNavigator();
 import * as FileSystem from "expo-file-system";
 import { Asset } from "expo-asset";
 
-const db_name = "app2.db";
+const db_name = "app6.db";
 
 FileSystem.downloadAsync(
   Asset.fromModule(require("./assets/" + db_name)).uri,
-  `${FileSystem.documentDirectory}SQLite/app2.db`
+  `${FileSystem.documentDirectory}SQLite/app6.db`
 );
 
 //database setup
