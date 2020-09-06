@@ -122,7 +122,7 @@ const ResidentRegisterForm = ({ navigation }) => {
               values.age, values.gender, values.emergency_contact,values.acid_reflux,values.chronic_low_back_pain,values.erectile_dysfunction], //values.acid_reflux],
             (_, { rows: { _array } }) => {
               console.log("Insert return " + JSON.stringify(_array));
-              navigation.navigate("Home");
+              navigation.goBack();
             },
             (_, error) => console.log("INSERT ERROR " + JSON.stringify(error))
           );

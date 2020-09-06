@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity, View, Platform } from "react-native";
 import {
-  Container,
-  Header,
-  Body,
-  CheckBox,
-  Title,
-  Card,
-  CardItem,
-  Left,
-  Right,
-  Icon,
-  Content,
-  Thumbnail,
-  Grid,
-  Col,
-  Text,
-  Button,
-  Subtitle,
+    Container,
+    Header,
+    Body,
+    CheckBox,
+    Title,
+    Card,
+    CardItem,
+    Left,
+    Right,
+    Icon,
+    Content,
+    Thumbnail,
+    Grid,
+    Col,
+    Text,
+    Button,
+    Subtitle,
 } from "native-base";
 import GlobalStyles from "../Style";
 
@@ -29,7 +29,7 @@ export default class ListItem extends Component {
   render() {
     return (
       <View style={GlobalStyles.containerStyle}>
-        <Card style={{ flex: 1, width: 360 }}>
+        <Card style={{ flex: 1, width: 340, marginRight: 0}}>
           <TouchableOpacity onPress={this.props.onPress}>
             <CardItem>
               <Left>
@@ -39,7 +39,7 @@ export default class ListItem extends Component {
                 </View>
               </Left>
               <Right>
-                <View style={{ alignItems: "flex-end" }}>
+                <View style={{ alignItems: "flex-end", paddingHorizontal: 10 }}>
                   <Subtitle>Dosage: {this.props.dosage}</Subtitle>
                   <Subtitle>ATC: {this.props.ATC}</Subtitle>
                 </View>

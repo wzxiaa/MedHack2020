@@ -146,7 +146,7 @@ const ResidentMedScreen = ({ data, navigation }) => {
         <>
         <View style={GlobalStyles.inputContainerStyle}>
             <SafeAreaView>
-            <MedListDisplay data={data}/>
+            <MedListDisplay data={data} navigation={navigation}/>
             </SafeAreaView>
         </View>
         <View style={styles.bottom}>

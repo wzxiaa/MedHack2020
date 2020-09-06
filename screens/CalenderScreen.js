@@ -40,12 +40,12 @@ const CalenderScreen = () => {
           const numItems = Math.floor(Math.random() * 3 + 1);
           for (let j = 0; j < numItems; j++) {
             items[strTime].push({
-              name: "Event Details",
+              name: "Medicine Taking Details",
               resident: nameArr[Math.floor(Math.random() * nameArr.length)],
               med: medArr[Math.floor(Math.random() * medArr.length)],
               time:  timeArr[Math.floor(Math.random() * timeArr.length)],
               note: noteArr[Math.floor(Math.random() * noteArr.length)],
-              height: 50,
+              height: 140,
             });
           }
 

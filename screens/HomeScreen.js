@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, Button, StyleSheet, StatusBar } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -16,6 +16,15 @@ const HomeScreen = ({ navigation }) => {
     gender: "male",
     emergency_contact: "1111",
   };
+
+  useEffect(() => {
+    navigation.addListener(
+        'didFocus',
+        payload => {
+            console.log("refresh here");
+        }
+    );
+  }, []);
 
   return (
     <View style={styles.container}>
