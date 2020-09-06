@@ -26,8 +26,6 @@ const ResidentRegisterForm = () => {
         name:'', 
         age:'',
         gender:'',
-        medical_history:'',
-        prescribed_med:'',
         emergency_contact:'',
         acid_reflux: false,
         chronic_low_back_pain: false,
